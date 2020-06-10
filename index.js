@@ -41,7 +41,39 @@ class Airplane {
 */
 
 class Person {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+    this.stomach = stomach;
+    this.speak = function personToString() {
+      return `${this.name} says Hellurr, mah name ${this.name} an I's ${this.age}`;
+    }
+  }
+}
 
+
+const stomach = [];
+
+class Phil extends Person {
+  constructor(name) {
+    super(name);
+  }
+}
+
+Person.prototype.eat = function (someFood) {
+  if (stomach.length < 10) {
+    stomach.push(someFood);
+  }
+  return stomach;
+}
+
+Phil.eat();
+
+Person.prototype.poop = function() {
+  if (stomach.length >= 10) {
+    stomach.splice(0, stomach.length);
+  }
+  return (`${this.name} gently closed the bathroom door...`);
 }
 
 /*
@@ -146,11 +178,25 @@ class ProjectManager {
 ///////// END OF CHALLENGE /////////
 if (typeof exports !== 'undefined') {
   module.exports = module.exports || {}
-  if (Airplane) { module.exports.Airplane = Airplane }
-  if (Person) { module.exports.Person = Person }
-  if (Car) { module.exports.Car = Car }
-  if (Lambdasian) { module.exports.Lambdasian = Lambdasian }
-  if (Instructor) { module.exports.Instructor = Instructor }
-  if (Student) { module.exports.Student = Student }
-  if (ProjectManager) { module.exports.ProjectManager = ProjectManager }
+  if (Airplane) {
+    module.exports.Airplane = Airplane
+  }
+  if (Person) {
+    module.exports.Person = Person
+  }
+  if (Car) {
+    module.exports.Car = Car
+  }
+  if (Lambdasian) {
+    module.exports.Lambdasian = Lambdasian
+  }
+  if (Instructor) {
+    module.exports.Instructor = Instructor
+  }
+  if (Student) {
+    module.exports.Student = Student
+  }
+  if (ProjectManager) {
+    module.exports.ProjectManager = ProjectManager
+  }
 }
