@@ -163,7 +163,7 @@ class Petar extends Lambdasian {
     }
 }
 
-// Petar.speak();
+// console.log(Petar.speak());
 
 /*
   TASK 4
@@ -179,8 +179,19 @@ class Petar extends Lambdasian {
         + `demo` receives a `subject` string as an argument and returns the phrase 'Today we are learning about {subject}' where subject is the param passed in.
         + `grade` receives a `student` object and a `subject` string as arguments and returns '{student.name} receives a perfect score on {subject}'
 */
-class Instructor {
-
+class Instructor extends Lambdasian {
+    constructor(childAttributes) {
+        super(childAttributes);
+        childAttributes.name = 'Luis';
+        childAttributes.age = 45;
+        childAttributes.location = 'Provo';
+        childAttributes.specialty = 'SQL';
+        childAttributes.favLanguage = 'C#';
+        childAttributes.catchPhrase = 'Don\'t forget the homies';
+    }
+    speak() {
+        return 'Hello my name is ${name}, I am from ${location}';
+    }
 }
 
 /*
