@@ -126,7 +126,7 @@ Car.prototype.drive = function(distance) {
   }
 };
 
-console.log(batmobile.drive(100, 25));
+// console.log(batmobile.drive(100, 25));
 
 /*
 TASK 3
@@ -141,28 +141,15 @@ TASK 3
       + {name} and {location} of course come from the instance's own properties.
 */
 class Lambdasian {
-  constructor(attr) {
-    this.name = attr.name;
-    this.age = attr.age;
-    this.location = attr.location;
-  }
-  speak() {
-    console.log(`Hello my name is ${this.name}, I am from ${this.location}`);
-  }
-}
-
-console.log(Lambdasian);
-
-class Lamb extends Lambdasian {
-  constructor() {
-    super(Attr);
+  constructor(lambdasianAttr) {
+    this.name = lambdasianAttr.name;
+    this.age = lambdasianAttr.age;
+    this.location = lambdasianAttr.location;
   }
   speak() {
     return `Hello my name is ${this.name}, I am from ${this.location}`;
   }
 }
-
-console.log(Lamb);
 
 const petar = new Lambdasian({
   name: "Petar",
@@ -170,7 +157,7 @@ const petar = new Lambdasian({
   location: "NY City"
 });
 
-console.log(petar.speak);
+// console.log(petar.speak);
 
 /*
 TASK 4
@@ -187,12 +174,21 @@ TASK 4
       + `grade` receives a `student` object and a `subject` string as arguments and returns '{student.name} receives a perfect score on {subject}'
 */
 class Instructor extends Lambdasian {
-  constructor(attr) {
-    super(attr);
+  constructor(instructorAttr) {
+    super(instructorAttr);
+    this.specialty = instructorAttr.specialty;
+    this.favLanguage = instructorAttr.favLanguage;
+    this.catchPhrase = instructorAttr.catchPhrase;
   }
   speak() {
-    return `Hello my name is ${this.name}`;
+    return `Hello my name is ${this.name} and I am from ${this.location}`;
   }
+  demo(subject) {
+    return `Today we are learning about ${subject}`;
+  }
+  grade(student, subject) {
+    return `${student.name} receives a perfect score on ${subject}`;
+    }
 }
 
 const luis = new Instructor({
@@ -202,12 +198,6 @@ const luis = new Instructor({
   specialty: "SQL",
   favLanguage: "C#",
   catchPhrase: "Don't forget the homies",
-  demo(subject) {
-    return `Today we are learning about ${subject}`;
-  },
-  grade(student, subject) {
-    return `${student.name} receives a perfect score on ${subject}`;
-    }
 });
 
 // console.log(luis.speak);
@@ -228,31 +218,33 @@ TASK 5
       + `sprintChallenge` similar to PRAssignment but returns `student.name has begun sprint challenge on {subject}`
 */
 class Student extends Lambdasian {
-  constructor(attr) {
-    super(attr);
-    this.previousBackground = attr.previousBackground;
-    this.className = attr.className;
+  constructor(studentAttr) {
+    super(studentAttr);
+    this.previousBackground = studentAttr.previousBackground;
+    this.className = studentAttr.className;
+    this.favSubjects = studentAttr.favSubjects;
   }
-  favSubjects = ['HTML', 'CSS', 'JavaScript'];
   listSubjects() {
-    return `Loving ${this.listSubjects}!`;
+    return `Loving ${this.favSubjects}!`;
   }
   PRAssignment(subject) {
-    return `${Student.name} has submitted a PR for ${subject}.`;
+    return `${name} has submitted a PR for ${subject}`;
   }
   sprintChallenge(subject) {
-    return `${Student.name} has begun sprint challenge on ${subject}.`;
+    return `${name} has begun sprint challenge on ${subject}`;
   }
-}
+};
 
-const bruce = new Student({
-  name: 'Bruce',
-  age: 23,
-  location: 'Gotham City',
- 
+const studentAttr = new Student({
+  name: 'Matt',
+  age: 30,
+  location: 'London',
+  previousBackground: 'Plumber',
+  className: 'WEBEU 3',
+  favSubjects: ['JS', 'Node', 'Redux']
 });
 
-console.log(bruce.PRAssignment('HTML'));
+// console.log(bruce.PRAssignment('Node'));
 
 /*
 TASK 6
@@ -267,7 +259,9 @@ TASK 6
       + `standUp` a method that takes in a slack channel and returns `{name} announces to {channel}, @channel standy times!`
       + `debugsCode` a method that takes in a student object and a subject and returns `{name} debugs {student.name}'s code on {subject}`
 */
-class ProjectManager {}
+class ProjectManager extends Instructor {
+  
+}
 
 /*
 STRETCH PROBLEM (no tests!)
