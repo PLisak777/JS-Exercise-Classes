@@ -45,21 +45,22 @@ class Person {
     this.name = name;
     this.age = age;
     this.stomach = stomach;
-    this.speak = function personToString() {
-      return `${this.name} says Hellurr, mah name ${this.name} an I's ${this.age}`;
+    this.speak = function speak() {
+      return `Hi, I'm ${name} and I'm ${age} years old.`;
     }
   }
 }
 
+Person.prototype.toString = function personToString(){
+  return `${this.name} says Hellurr, mah name ${this.name} an I's ${this.age}`;
+}
 
 const stomach = [];
-
 class Phil extends Person {
   constructor(name) {
     super(name);
   }
 }
-
 Person.prototype.eat = function (someFood) {
   if (stomach.length < 10) {
     stomach.push(someFood);
@@ -67,13 +68,13 @@ Person.prototype.eat = function (someFood) {
   return stomach;
 }
 
-Phil.eat();
+// Phil.eat();
 
 Person.prototype.poop = function() {
   if (stomach.length >= 10) {
     stomach.splice(0, stomach.length);
   }
-  return (`${this.name} gently closed the bathroom door...`);
+  return (`${this.name} gently closes the bathroom door...`);
 }
 
 /*
@@ -91,8 +92,32 @@ Person.prototype.poop = function() {
 */
 
 class Car {
-
+  constructor(model, milesPerGallon) {
+    this.model = model;
+    this.milesPerGallon = milesPerGallon;
+    this.tank = tank;
+    this.odometer = odometer;
+  }
 }
+
+let tank = 0;
+let odometer = 0;
+
+class batmobile extends Car {
+  constructor(name) {
+    super(name);
+  }
+}
+
+Car.prototype.fill = function(gallons) {
+  this.tank = this.tank + gallons;
+}
+
+Car.prototype.drive = function(distance) {
+  this.odometer = this.odometer + distance;
+}
+
+// batmobile.drive(10);
 
 /*
   TASK 3
