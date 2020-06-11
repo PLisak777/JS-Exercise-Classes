@@ -140,16 +140,19 @@ class Lambdasian {
         this.age = age;
         this.location = location;
     }
-    speak = function() {
-        return (`Hello, my name is ${this.name}, I am from ${this.location}`);
+    speak() {
+        console.log(`Hello my name is ${this.name}, I am from ${this.location}`);
     }
 }
 
-class Joey extends Lambdasian {
-    constructor(name) {
-        super(name);
-    }
-}
+// console.log(Lambdasian);
+
+const petar = new Lambdasian({
+    name: 'Petar',
+    age: 23,
+    location: 'NY City'
+});
+
 
 /*
   TASK 4
