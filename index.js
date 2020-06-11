@@ -139,10 +139,10 @@ Car.prototype.drive = function(distance) {
         + {name} and {location} of course come from the instance's own properties.
 */
 class Lambdasian {
-    constructor(name, age, location) {
-        this.name = name;
-        this.age = age;
-        this.location = location;
+    constructor(attr) {
+        this.name = attr.name;
+        this.age = attr.age;
+        this.location = attr.location;
     }
     speak() {
         console.log(`Hello my name is ${this.name}, I am from ${this.location}`);
@@ -151,12 +151,19 @@ class Lambdasian {
 
 // console.log(Lambdasian);
 
-const petar = new Lambdasian({
-    name: 'Petar',
-    age: 23,
-    location: 'NY City'
-});
+class Petar extends Lambdasian {
+    constructor(childAttr) {
+        super(childAttr);
+        childAttr.name = 'Petar';
+        childAttr.age = 23;
+        childAttr.location = 'NY City';
+    }
+    speak() {
+        return (`Hello my name is ${name}, I am from ${location}`);
+    }
+}
 
+// Petar.speak();
 
 /*
   TASK 4
