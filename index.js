@@ -9,16 +9,16 @@
 
 // EXAMPLE SOLUTION CODE:
 class Airplane {
-  constructor(name) {
-    this.name = name;
-    this.isFlying = false;
-  }
-  takeOff() {
-    this.isFlying = true;
-  }
-  land() {
-    this.isFlying = false;
-  }
+    constructor(name) {
+        this.name = name;
+        this.isFlying = false;
+    }
+    takeOff() {
+        this.isFlying = true;
+    }
+    land() {
+        this.isFlying = false;
+    }
 }
 
 /*
@@ -41,40 +41,40 @@ class Airplane {
 */
 
 class Person {
-  constructor(name, age) {
-    this.name = name;
-    this.age = age;
-    this.stomach = stomach;
-    this.speak = function speak() {
-      return `Hi, I'm ${name} and I'm ${age} years old.`;
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+        this.stomach = stomach;
+        this.speak = function speak() {
+            return `Hi, I'm ${name} and I'm ${age} years old.`;
+        }
     }
-  }
 }
 
-Person.prototype.toString = function personToString(){
-  return `${this.name} says Hellurr, mah name ${this.name} an I's ${this.age}`;
+Person.prototype.toString = function personToString() {
+    return `${this.name} says Hellurr, mah name ${this.name} an I's ${this.age}`;
 }
 
 const stomach = [];
 class Phil extends Person {
-  constructor(name) {
-    super(name);
-  }
+    constructor(name) {
+        super(name);
+    }
 }
-Person.prototype.eat = function (someFood) {
-  if (stomach.length < 10) {
-    stomach.push(someFood);
-  }
-  return stomach;
+Person.prototype.eat = function(someFood) {
+    if (stomach.length < 10) {
+        stomach.push(someFood);
+    }
+    return stomach;
 }
 
 // Phil.eat();
 
 Person.prototype.poop = function() {
-  if (stomach.length >= 10) {
-    stomach.splice(0, stomach.length);
-  }
-  return (`${this.name} gently closes the bathroom door...`);
+    if (stomach.length >= 10) {
+        stomach.splice(0, stomach.length);
+    }
+    return (`${this.name} gently closes the bathroom door...`);
 }
 
 /*
@@ -92,32 +92,35 @@ Person.prototype.poop = function() {
 */
 
 class Car {
-  constructor(model, milesPerGallon) {
-    this.model = model;
-    this.milesPerGallon = milesPerGallon;
-    this.tank = tank;
-    this.odometer = odometer;
-  }
+    constructor(model, milesPerGallon) {
+        this.model = model;
+        this.milesPerGallon = milesPerGallon;
+        this.tank = tank;
+        this.odometer = odometer;
+    }
 }
 
 let tank = 0;
 let odometer = 0;
 
 class batmobile extends Car {
-  constructor(name) {
-    super(name);
-  }
+    constructor(name) {
+        super(name);
+    }
+    milesPerGallon = 40;
 }
 
-Car.prototype.fill = function(gallons) {
-  this.tank = this.tank + gallons;
+Car.prototype.fill = function(fuel) {
+    this.tank = this.tank + fuel;
 }
 
-Car.prototype.drive = function(distance) {
-  this.odometer = this.odometer + distance;
+Car.prototype.drive = function(distance, fuel) {
+    let fuelConsumption = distance / fuel;
+    this.odometer = this.odometer + distance;
+    this.tank = this.tank - fuelConsumption;
 }
 
-// batmobile.drive(10);
+// console.log(batmobile.drive(100, 25));
 
 /*
   TASK 3
@@ -132,7 +135,20 @@ Car.prototype.drive = function(distance) {
         + {name} and {location} of course come from the instance's own properties.
 */
 class Lambdasian {
+    constructor(name, age, location) {
+        this.name = name;
+        this.age = age;
+        this.location = location;
+    }
+    speak = function() {
+        return (`Hello, my name is ${this.name}, I am from ${this.location}`);
+    }
+}
 
+class Joey extends Lambdasian {
+    constructor(name) {
+        super(name);
+    }
 }
 
 /*
@@ -202,26 +218,26 @@ class ProjectManager {
 ///////// END OF CHALLENGE /////////
 ///////// END OF CHALLENGE /////////
 if (typeof exports !== 'undefined') {
-  module.exports = module.exports || {}
-  if (Airplane) {
-    module.exports.Airplane = Airplane
-  }
-  if (Person) {
-    module.exports.Person = Person
-  }
-  if (Car) {
-    module.exports.Car = Car
-  }
-  if (Lambdasian) {
-    module.exports.Lambdasian = Lambdasian
-  }
-  if (Instructor) {
-    module.exports.Instructor = Instructor
-  }
-  if (Student) {
-    module.exports.Student = Student
-  }
-  if (ProjectManager) {
-    module.exports.ProjectManager = ProjectManager
-  }
+    module.exports = module.exports || {}
+    if (Airplane) {
+        module.exports.Airplane = Airplane
+    }
+    if (Person) {
+        module.exports.Person = Person
+    }
+    if (Car) {
+        module.exports.Car = Car
+    }
+    if (Lambdasian) {
+        module.exports.Lambdasian = Lambdasian
+    }
+    if (Instructor) {
+        module.exports.Instructor = Instructor
+    }
+    if (Student) {
+        module.exports.Student = Student
+    }
+    if (ProjectManager) {
+        module.exports.ProjectManager = ProjectManager
+    }
 }
