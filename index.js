@@ -107,17 +107,21 @@ class batmobile extends Car {
     constructor(name) {
         super(name);
     }
-    milesPerGallon = 40;
+    milesPerGallon = 20;
 }
 
-Car.prototype.fill = function(fuel) {
-    this.tank = this.tank + fuel;
+Car.prototype.fill = function(gallons) {
+    this.tank = this.tank + gallons;
 }
 
-Car.prototype.drive = function(distance, fuel) {
-    let fuelConsumption = distance / fuel;
-    this.odometer = this.odometer + distance;
-    this.tank = this.tank - fuelConsumption;
+Car.prototype.drive = function(distance) {
+    this.odometer += distance;
+    this.tank = this.tank - (distance / this.milesPerGallon);
+    if (this.tank <= 0) {
+        this.odometer += this.tank * this.milesPerGallon;
+        this.tank = 0;
+        return `I ran out of fuel at ${this.odometer} miles!`
+    }
 }
 
 // console.log(batmobile.drive(100, 25));
