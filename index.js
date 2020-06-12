@@ -105,7 +105,7 @@ class Car {
 let tank = 0;
 let odometer = 0;
 
-class batmobile extends Car {
+class batMobile extends Car {
   constructor(name) {
     super(name);
     this.milesPerGallon = 20;
@@ -151,13 +151,13 @@ class Lambdasian {
   }
 }
 
-const petar = new Lambdasian({
+const lambdasianAttr = new Lambdasian({
   name: "Petar",
   age: 23,
   location: "NY City"
 });
 
-// console.log(petar.speak);
+// console.log(lambdasianAttr.speak);
 
 /*
 TASK 4
@@ -186,21 +186,23 @@ class Instructor extends Lambdasian {
   demo(subject) {
     return `Today we are learning about ${subject}`;
   }
-  grade(student, subject) {
-    return `${student.name} receives a perfect score on ${subject}`;
+  grade(Student, subject) {
+    return `${Student.name} receives a perfect score on ${subject}`;
     }
-}
+};
 
-const luis = new Instructor({
+// Instructor.demo('redux');
+
+const instructorAttr = new Instructor({
   name: "Luis",
   age: 45,
   location: "Provo",
   specialty: "SQL",
-  favLanguage: "C#",
+  favLanguage: "Redux",
   catchPhrase: "Don't forget the homies",
 });
 
-// console.log(luis.speak);
+// console.log(Instructor.speak);
 
 /*
 TASK 5
@@ -228,10 +230,10 @@ class Student extends Lambdasian {
     return `Loving ${this.favSubjects}!`;
   }
   PRAssignment(subject) {
-    return `${name} has submitted a PR for ${subject}`;
+    return `${this.name} has submitted a PR for ${subject}`;
   }
   sprintChallenge(subject) {
-    return `${name} has begun sprint challenge on ${subject}`;
+    return `${this.name} has begun sprint challenge on ${subject}`;
   }
 };
 
@@ -244,7 +246,7 @@ const studentAttr = new Student({
   favSubjects: ['JS', 'Node', 'Redux']
 });
 
-// console.log(bruce.PRAssignment('Node'));
+// studentAttr.PRAssignment('redux');
 
 /*
 TASK 6
@@ -260,7 +262,17 @@ TASK 6
       + `debugsCode` a method that takes in a student object and a subject and returns `{name} debugs {student.name}'s code on {subject}`
 */
 class ProjectManager extends Instructor {
-  
+  constructor(projectManagerAttr) {
+    super(projectManagerAttr);
+    this.gradClassName = projectManagerAttr.gradClassName;
+    this.favInstructor = projectManagerAttr.favInstructor;
+  }
+  standUp(channel) {
+    return `${this.name} announces to ${channel}, @channel standy times!`;
+  }
+  debugsCode(Student, subject) {
+    return `${this.name} debugs ${Student.name}'s code on ${subject}`;
+  }
 }
 
 /*
